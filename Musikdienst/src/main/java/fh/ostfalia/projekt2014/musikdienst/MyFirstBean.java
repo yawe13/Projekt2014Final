@@ -4,7 +4,7 @@
  */
 package fh.ostfalia.projekt2014.musikdienst;
 
-import ejb.MyFirstRemoteBeanRemote;
+import ejb.MyFirstBeanRemote;
 import javax.ejb.Stateful;
 
 /**
@@ -12,7 +12,7 @@ import javax.ejb.Stateful;
  * @author Yannick
  */
 @Stateful
-public class MyFirstRemoteBean implements MyFirstRemoteBeanRemote {
+public class MyFirstBean implements MyFirstBeanRemote {
 
     @Override
     public int getValue() {
