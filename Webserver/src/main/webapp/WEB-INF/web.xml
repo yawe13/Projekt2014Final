@@ -18,12 +18,8 @@
             30
         </session-timeout>
     </session-config>
-    <managed-bean>
-        <managed-bean-name>myBean</managed-bean-name>
-        <managed-bean-class>fh.ostfalia.projekt2014.webserver.NewSessionBean</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
+
     <welcome-file-list>
-        <welcome-file>index.xhtml</welcome-file>
+        <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
 </web-app>
