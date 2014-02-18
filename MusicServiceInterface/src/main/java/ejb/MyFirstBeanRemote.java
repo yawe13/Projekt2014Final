@@ -13,4 +13,5 @@ import javax.ejb.Remote;
 @Remote
 public interface MyFirstBeanRemote {
     public int getValue();
+    public String getString();
 }
