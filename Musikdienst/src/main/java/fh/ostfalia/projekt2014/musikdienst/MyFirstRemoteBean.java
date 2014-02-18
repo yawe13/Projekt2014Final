@@ -4,18 +4,19 @@
  */
 package fh.ostfalia.projekt2014.musikdienst;
 
-import javax.ejb.Stateless;
-import javax.ejb.LocalBean;
+import ejb.MyFirstRemoteBeanRemote;
+import javax.ejb.Stateful;
 
 /**
  *
- * @author martin
+ * @author Yannick
  */
-@Stateless
-@LocalBean
-public class NewSessionBean {
+@Stateful
+public class MyFirstRemoteBean implements MyFirstRemoteBeanRemote {
 
-    public void businessMethod() {
+    @Override
+    public int getValue() {
+        return 5;
     }
 
     // Add business logic below. (Right-click in editor and choose
