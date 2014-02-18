@@ -6,7 +6,7 @@
       <managed-bean>
         <managed-bean-name>myBean</managed-bean-name>
         <managed-bean-class>fh.ostfalia.projekt2014.webserver.MyManagedBean</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
+    
+        <managed-bean-scope>request</managed-bean-scope></managed-bean>
     
 </faces-config>
