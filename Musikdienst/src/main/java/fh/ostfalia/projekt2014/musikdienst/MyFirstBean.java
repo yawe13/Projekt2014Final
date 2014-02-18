@@ -22,4 +22,9 @@ public class MyFirstBean implements MyFirstBeanRemote {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
+    @Override
+    public String getString() {
+        return "RMI GEHT!!!!!";
+    }
+
 }
