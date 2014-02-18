@@ -4,13 +4,11 @@
  */
 package fh.ostfalia.projekt2014.musicservice;
 
-import javax.annotation.ManagedBean;
+
 import ejb.MyFirstBeanRemote;
 import fh.ostfalia.projekt2014.beanmanager.RemoteManagedBean;
-import java.util.ArrayList;
-import java.util.Collections;
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
+
 /**
  *
  * @author Yannick
@@ -21,7 +19,7 @@ public class MyManagedBean extends RemoteManagedBean{
      * Creates a new instance of MyManagedBean
      */
     public MyManagedBean() {
-        super("localhost", "3700", "java:global/fh.ostfalia.projekt2014.musikdienst/MyFirstBean");
+        super("localhost", "3700", "java:global/Musicservice/MyFirstBean");
     }
     
     public void getString(){

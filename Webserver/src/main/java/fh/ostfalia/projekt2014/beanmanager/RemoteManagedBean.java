@@ -3,6 +3,11 @@ package fh.ostfalia.projekt2014.beanmanager;
 import fh.ostfalia.projekt2014.beanmanager.BeanManager;
 import javax.annotation.PostConstruct;
 
+
+/* abstrakte Klasse, die von jeder Bean pro Service geerbet wird,
+ * damit die Services auf ihre Objekte zugreifen können
+ * 
+ */
 public abstract class RemoteManagedBean { 
     private String ip = null;
     private String port = null;
