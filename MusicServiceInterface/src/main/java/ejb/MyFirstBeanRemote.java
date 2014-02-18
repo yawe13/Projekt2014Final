@@ -11,6 +11,6 @@ import javax.ejb.Remote;
  * @author Yannick
  */
 @Remote
-public interface MyFirstRemoteBeanRemote {
+public interface MyFirstBeanRemote {
     public int getValue();
 }
