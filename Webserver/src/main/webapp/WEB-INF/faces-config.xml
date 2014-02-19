@@ -3,19 +3,9 @@
               xmlns="http://xmlns.jcp.org/xml/ns/javaee"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
-<managed-bean>
-  <managed-bean-name>myBean</managed-bean-name>
-  <managed-bean-class>fh.ostfalia.projekt2014.musicservice.MyManagedBean</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
-</managed-bean>
-    <managed-bean>
-        <managed-bean-name>mp3DaoMBean</managed-bean-name>
-        <managed-bean-class>fh.ostfalia.projekt2014.musicservice.Mp3DaoMBean</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>artistDaoMBean</managed-bean-name>
-        <managed-bean-class>fh.ostfalia.projekt2014.musicservice.ArtistDaoMBean</managed-bean-class>
+     <managed-bean>
+        <managed-bean-name>LoginMBean</managed-bean-name>
+        <managed-bean-class>fh.ostfalia.projekt2014.loginservice.LoginMBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
 </faces-config>

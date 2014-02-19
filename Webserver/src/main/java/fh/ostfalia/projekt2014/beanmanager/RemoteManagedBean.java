@@ -1,12 +1,13 @@
 package fh.ostfalia.projekt2014.beanmanager;
 
-import fh.ostfalia.projekt2014.beanmanager.BeanManager;
+import fh.ostfalia.projekt2014.beanmanager.RemoteBeanManager;
 import javax.annotation.PostConstruct;
 
 
-/* abstrakte Klasse, die von jeder Bean pro Service geerbet wird,
+/* abstrakte Klasse, die von jeder RemoteManagedBean pro Service geerbet wird,
  * damit die Services auf ihre Objekte zugreifen können
- * 
+ * Z.B. implementiert die RemoteMp3DaoBean  die RemoteManagedBean, die RemoteArtistDaoBean implementiert ebenfalls die RemoteManagedBean.
+ * Diese Klasse wird von jeder Remote
  */
 public abstract class RemoteManagedBean { 
     private String ip = null;
@@ -25,9 +26,11 @@ public abstract class RemoteManagedBean {
     public Object getObject() {
         return object;
     }
-    
+    /**
+     *  initObject nutzt den RemoteBeanManager um angeforderte Objekte aufzurufen
+     */
     @PostConstruct
     private void initObject(){
-        this.object = BeanManager.getInstance().lookupRemoteBean(name, ip, port);
+        this.object = RemoteBeanManager.getInstance().lookupRemoteBean(name, ip, port);
     }
 }
