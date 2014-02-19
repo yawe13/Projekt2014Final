@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package fh.ostfalia.projekt2014.logindienst.dao;
+package fh.ostfalia.projekt2014.loginservice.dao;
 
-import fh.ostfalia.projekt2014.logindienst.entities.User;
+import fh.ostfalia.projekt2014.loginservice.entities.User;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package fh.ostfalia.projekt2014.logindienst.entities;
+package fh.ostfalia.projekt2014.loginservice.entities;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;

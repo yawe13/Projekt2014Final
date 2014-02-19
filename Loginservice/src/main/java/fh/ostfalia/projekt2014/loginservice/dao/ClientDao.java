@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package fh.ostfalia.projekt2014.logindienst.dao;
+package fh.ostfalia.projekt2014.loginservice.dao;
 
-import fh.ostfalia.projekt2014.logindienst.entities.Client;
+import fh.ostfalia.projekt2014.loginservice.entities.Client;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

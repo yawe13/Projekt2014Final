@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package fh.ostfalia.projekt2014.logindienst.controller;
+package fh.ostfalia.projekt2014.loginservice.controller;
 
-import fh.ostfalia.projekt2014.logindienst.dao.ClientDao;
-import fh.ostfalia.projekt2014.logindienst.entities.Client;
+import fh.ostfalia.projekt2014.loginservice.dao.ClientDao;
+import fh.ostfalia.projekt2014.loginservice.entities.Client;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
