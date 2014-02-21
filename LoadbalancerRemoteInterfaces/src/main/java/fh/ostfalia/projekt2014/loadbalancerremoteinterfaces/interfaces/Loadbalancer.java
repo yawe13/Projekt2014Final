@@ -4,6 +4,7 @@
  */
 package fh.ostfalia.projekt2014.loadbalancerremoteinterfaces.interfaces;
 
+import fh.ostfalia.projekt2014.loadbalancerremoteinterfaces.entities.LoadbalancerResult;
 import javax.ejb.Remote;
 
 /**
@@ -13,5 +14,5 @@ import javax.ejb.Remote;
 @Remote
 public interface Loadbalancer {
     
-    public void callMusicservice(String musicservice);
+    public LoadbalancerResult startLoadbalancerSimulation();
 }
