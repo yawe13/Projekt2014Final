@@ -28,7 +28,7 @@ public class LoadbalancerMBean extends RemoteManagedBean{
     }
     
     public void startLoadbalancerSimulation(){
-        this.loadbalancerResult = loadbalancerBean.startLoadbalancerSimulation();
+//        this.loadbalancerResult = loadbalancerBean.startLoadbalancerSimulation();
         loadbalancerResult.getServerId();
     }
 }
