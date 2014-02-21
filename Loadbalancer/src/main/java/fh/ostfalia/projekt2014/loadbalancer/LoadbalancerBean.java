@@ -4,6 +4,7 @@
  */
 package fh.ostfalia.projekt2014.loadbalancer;
 
+import fh.ostfalia.projekt2014.loadbalancerremoteinterfaces.entities.LoadbalancerResult;
 import fh.ostfalia.projekt2014.loadbalancerremoteinterfaces.interfaces.Loadbalancer;
 import javax.ejb.Stateful;
 import javax.ejb.LocalBean;
@@ -17,7 +18,8 @@ import javax.ejb.LocalBean;
 public class LoadbalancerBean implements Loadbalancer{
 
     @Override
-    public void callMusicservice(String musicservice) {
+    public LoadbalancerResult startLoadbalancerSimulation() {
+        return null;
         
     }
     
