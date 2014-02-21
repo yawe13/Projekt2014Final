@@ -33,7 +33,7 @@ public class UserLoginServlet extends HttpServlet {
         String role = request.getParameter("role");
       
      
-        User user = new User(userId, username, password, role);
+        User user = new User(username, password, role);
         
         if("Add".equalsIgnoreCase(action)){
             userDao.addUser(user);

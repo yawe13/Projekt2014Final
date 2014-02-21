@@ -5,6 +5,7 @@
 package fh.ostfalia.projekt2014.loginservice.dao;
 
 import fh.ostfalia.projekt2014.loginservice.entities.User;
+import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,37 +20,21 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
-/**
- *
- * @author anton
- */
+
 @Stateless
-public class UserDao  {
+public class UserDao implements Serializable {
      @PersistenceContext
     private EntityManager em;
-    @Resource
-    UserTransaction ut;
+  //  @Resource
+    //UserTransaction ut;
     
     public void addUser(User user) {
-         try {
-             ut.begin();
+         System.out.println("-----> Wir sind in Adduser im UserDAO!");
+        
+           //  ut.begin();
              em.persist(user);
-             ut.commit();
-         } catch (NotSupportedException ex) {
-             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
-         } catch (SystemException ex) {
-             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
-         } catch (RollbackException ex) {
-             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
-         } catch (HeuristicMixedException ex) {
-             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
-         } catch (HeuristicRollbackException ex) {
-             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
-         } catch (SecurityException ex) {
-             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
-         } catch (IllegalStateException ex) {
-             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
-         }
+             //ut.commit();
+       
     }
 
     public void editUser(User user) {

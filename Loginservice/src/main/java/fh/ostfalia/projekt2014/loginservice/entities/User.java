@@ -5,9 +5,6 @@
 package fh.ostfalia.projekt2014.loginservice.entities;
 
 import java.io.Serializable;
-import javax.annotation.ManagedBean;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,19 +14,16 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-/**
- *
- * @author anton
- */
+
 @Entity
 @Table
 @NamedQueries({@NamedQuery(name="User.getAll",query="SELECT e FROM User e")})
 public class User implements Serializable{
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column (name = "userid")
+    @Column (name = "userid", unique=true)
     private int userId;
-    @Column (name = "username")
+    @Column (name = "username", unique=true)
     private String username;
     @Column (name = "password")
     private String password;
@@ -70,8 +64,7 @@ public class User implements Serializable{
 
  
 
-    public User(int userId, String username, String password, String role) {
-        this.userId = userId;
+    public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
         this.role = role;
