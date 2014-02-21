@@ -8,10 +8,10 @@
     <h:body>
         <h:form>
             <h:outputText value="Benutzername: "/>
-            <h:inputText id="username" value="#{user.username}"/><br/>
+            <h:inputText id="username" value="#{LoginMBean.username}"/><br/>
             <h:outputText value="Passwort "/>
-            <h:inputSecret id="password" value="#{user.password}"/><br/>
-            <h:commandButton value="Add User" action="#{UserDao.addUser(user)}"/>
+            <h:inputSecret id="password" value="#{LoginMBean.password}"/><br/>
+            <h:commandButton value="Add User" action="#{LoginMBean.addUser()}"/>
         </h:form>
     </h:body>
 </html>

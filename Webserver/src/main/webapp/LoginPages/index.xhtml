@@ -6,20 +6,20 @@
         <title>Musikservice</title>
     </h:head>
     <h:body>
-       <h:form id="j_security_check" >
-           
+        <h:form id="j_security_check" >
+
             <h:outputText id="text_username" value="Username: "/>
-             <h:inputText id="j_username"  value="#{LoginMBean.username}"/>
-              <br />
+            <h:inputText id="j_username"  value="#{LoginMBean.username}"/>
+            <br />
             <h:outputText id="text_password" value="Passwort: "/>
             <h:inputSecret id="j_password" value="#{LoginMBean.password}"/>
 
             <br />
             <h:commandButton value="Login" 
-                             action="#{LoginMBean.login()}" />
-            <h:link outcome="registrierung.xhtml" value="Registrierung"/>
-            
+                             action="#{LoginMBean.login()}" type="submit" />
         </h:form>
+        <h:link outcome="registrierung.xhtml" value="Registrierung"/>
+        
     </h:body>
 </html>
 
