@@ -10,7 +10,6 @@
         <module>../Commentservice</module>
         <module>../CommentserviceRemoteInterfaces</module>
         <module>../Loadbalancer</module>
-        <module>../LoadbalancerserviceRemoteInterfaces</module>
         <module>../LoginserviceRemoteInterfaces</module>
         <module>../Musicservice</module>
         <module>../Musicservice2</module>
@@ -18,5 +17,6 @@
         <module>../MusicserviceRemoteInterfaces</module>
         <module>../Webserver</module>
         <module>../Loginservice</module>
+        <module>../LoadbalancerRemoteInterfaces</module>
     </modules>
 </project>
