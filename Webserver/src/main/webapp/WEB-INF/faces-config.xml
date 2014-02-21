@@ -13,4 +13,10 @@
         <managed-bean-class>fh.ostfalia.projekt2014.loadbalancer.LoadbalancerMBean</managed-bean-class>
     
         <managed-bean-scope>request</managed-bean-scope></managed-bean>
+     <managed-bean>
+        <managed-bean-name>MusicserviceMBean</managed-bean-name>
+        <managed-bean-class>fh.ostfalia.projekt2014.musicservice.MusicserviceMBean</managed-bean-class>
+    
+        <managed-bean-scope>request</managed-bean-scope>
+</managed-bean>  
 </faces-config>

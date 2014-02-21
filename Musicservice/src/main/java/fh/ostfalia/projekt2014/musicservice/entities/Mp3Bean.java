@@ -5,6 +5,7 @@
  */
 package fh.ostfalia.projekt2014.musicservice.entities;
 
+import fh.ostfalia.projekt2014.musicserviceremoteinterface.entities.Mp3;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -33,17 +34,18 @@ import javax.persistence.NamedQuery;
 @NamedQueries({
     @NamedQuery(name = "Mp3.getAll", query = "SELECT e FROM Mp3 e")})
 
-public class Mp3 implements Serializable{
-
+public class Mp3Bean implements Serializable, Mp3{
+  private static final long serialVersionUID = 1L;
+    
     private Mp3Artist mp3Artist;
     private int mp3Id;
     private byte[] mp3File;
     private String mp3Title;
 
-    public Mp3() {
+    public Mp3Bean() {
     }
 
-    public Mp3(Mp3Artist mp3Artist, byte[] mp3File, String mp3Title) {
+    public Mp3Bean(Mp3Artist mp3Artist, byte[] mp3File, String mp3Title) {
         this.mp3Artist = mp3Artist;
         this.mp3File = mp3File;
         this.mp3Title = mp3Title;
@@ -52,29 +54,35 @@ public class Mp3 implements Serializable{
     @Id
     @Column(name = "mp3_id")
     @GeneratedValue(strategy = IDENTITY)
+    @Override
     public int getMp3Id() {
         return mp3Id;
     }
 
+    @Override
     public void setMp3Id(int mp3_id) {
         this.mp3Id = mp3_id;
     }
 
     @Column(name = "mp3_file")
     @Lob
+    @Override
     public byte[] getMp3File() {
         return mp3File;
     }
 
+    @Override
     public void setMp3File(byte[] mp3_file) {
         this.mp3File = mp3_file;
     }
 
     @Column(name = "mp3_title")
+    @Override
     public String getMp3Title() {
         return mp3Title;
     }
 
+    @Override
     public void setMp3Title(String mp3_title) {
         this.mp3Title = mp3_title;
 
@@ -90,10 +98,12 @@ public class Mp3 implements Serializable{
         this.mp3Artist = mp3Artist;
     }
     
+    @Override
     public int getArtistId(){
         return mp3Artist.getArtistId();
     }
     
+    @Override
     public void setMp3ByteCodeFromFile(File file) {
 
         try {
@@ -105,11 +115,11 @@ public class Mp3 implements Serializable{
                 inputStream.read(mp3File);
                 inputStream.close();
             } catch (IOException ex) {
-                Logger.getLogger(Mp3.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Mp3Bean.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Mp3.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Mp3Bean.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

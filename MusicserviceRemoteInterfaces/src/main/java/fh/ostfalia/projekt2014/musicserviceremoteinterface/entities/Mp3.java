@@ -7,11 +7,13 @@
 package fh.ostfalia.projekt2014.musicserviceremoteinterface.entities;
 
 import java.io.File;
+import javax.ejb.Remote;
 
 /**
  *
  * @author Mettbrötchen
  */
+@Remote
 public interface Mp3 {
      public int getMp3Id();
      public void setMp3Id(int mp3_id);

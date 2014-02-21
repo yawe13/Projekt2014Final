@@ -5,7 +5,7 @@
  */
 package fh.ostfalia.projekt2014.musicservice.entities;
 
-import fh.ostfalia.projekt2014.musicservice.entities.Mp3;
+import fh.ostfalia.projekt2014.musicservice.entities.Mp3Bean;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -37,7 +37,7 @@ public class Mp3Artist implements Serializable {
 
     private int artistId;
     private String artistName;
-    private Set<Mp3> mp3Beans = new HashSet();
+    private Set<Mp3Bean> mp3Beans = new HashSet();
     
     public Mp3Artist(){
     }
@@ -58,7 +58,7 @@ public class Mp3Artist implements Serializable {
         this.artistId = artist_id;
     }
     
-    public void addMp3Bean(Mp3 mp3Bean){
+    public void addMp3Bean(Mp3Bean mp3Bean){
         mp3Beans.add(mp3Bean);
     }
 
@@ -73,12 +73,12 @@ public class Mp3Artist implements Serializable {
     }
 
     @OneToMany(cascade=CascadeType.ALL , fetch = FetchType.LAZY, mappedBy = "Mp3ArtistBean")
-    public Set<Mp3> getMp3Beans() {
+    public Set<Mp3Bean> getMp3Beans() {
         return this.mp3Beans;
     }
     
 
-    public void setMp3Beans(Set<Mp3> mp3Beans) {
+    public void setMp3Beans(Set<Mp3Bean> mp3Beans) {
         this.mp3Beans = mp3Beans;
     }
 

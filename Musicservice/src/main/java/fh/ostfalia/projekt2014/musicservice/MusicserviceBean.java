@@ -22,6 +22,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.servlet.http.Part;
 
@@ -31,11 +32,11 @@ import javax.servlet.http.Part;
  */
 @Stateless
 public class MusicserviceBean implements Serializable, Musicservice {
-
-    private Mp3Dao mp3 = new Mp3Dao();
+    @EJB
+    private Mp3Dao mp3;
+    
     private Mp3ArtistDao mp3artist;
     private List <Mp3Artist> lArtists;
-    private List <Mp3> lMp3;
     public MusicserviceBean() {
         //mp3 = new Mp3Dao();
         mp3artist = new Mp3ArtistDao();
@@ -63,16 +64,7 @@ public class MusicserviceBean implements Serializable, Musicservice {
     @Override
     public List<Mp3> getAllMp3s() {
         System.out.println("BIN IN GETALLMP3S Drin!!!!");
-
-        System.out.println("MP3LIST1:"+ mp3.getAllMp3s().get(0).getMp3Title());
-        List l = mp3.getAllMp3s();
-        
-        System.out.println("MP3LIST:"+ l.get(0));
-        
-        for(int i = 0; i <= l.size(); i++){
-            lMp3.add((Mp3) mp3.getAllMp3s().get(i));
-        }    
-        return lMp3;
+        return mp3.getAllMp3s();
     }
 
     @Override

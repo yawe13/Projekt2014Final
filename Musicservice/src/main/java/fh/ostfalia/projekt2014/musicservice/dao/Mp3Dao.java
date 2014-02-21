@@ -54,6 +54,7 @@ public class Mp3Dao {
     }
 
     public Mp3 getMp3(int mp3_id) {
+        System.out.println("GET MP333333333333");
         return em.find(Mp3.class, mp3_id);
     }
 
@@ -76,6 +77,7 @@ public class Mp3Dao {
     }
 
     public List<Mp3> getAllMp3s() {
+        System.out.println("MP3 DAOOOOOOO");
         return em.createNamedQuery("Mp3.getAll").getResultList();
     }
 

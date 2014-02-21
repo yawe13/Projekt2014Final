@@ -5,7 +5,7 @@
  */
 package fh.ostfalia.projekt2014.musicservice.util;
 
-import fh.ostfalia.projekt2014.musicservice.entities.Mp3;
+import fh.ostfalia.projekt2014.musicservice.entities.Mp3Bean;
 import fh.ostfalia.projekt2014.musicservice.entities.Mp3Artist;
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,17 +25,17 @@ public class Id3Tag {
 
     private MP3File mp3file;
     private final File uploadDir;
-    private Mp3 mp3;
+    private Mp3Bean mp3;
     Mp3Artist mp3Artist;
 
     public Id3Tag() {
-        mp3 = new Mp3();
+        mp3 = new Mp3Bean();
         mp3Artist = new Mp3Artist();
         uploadDir = new File("C:\\Users\\Mettbrötchen\\Documents\\NetBeansProjects\\Projekt2014Final\\Musicservice\\Upload");
     }
 
     public Id3Tag(String customUploadPath) {
-        mp3 = new Mp3();
+        mp3 = new Mp3Bean();
         mp3Artist = new Mp3Artist();
         uploadDir = new File(customUploadPath);
     }
@@ -50,7 +50,7 @@ public class Id3Tag {
         return mp3file.getID3v1Tag().getSongTitle();
     }
     
-    public Mp3 readMp3File(File file){
+    public Mp3Bean readMp3File(File file){
         try {
             
 
@@ -69,16 +69,16 @@ public class Id3Tag {
         
     }
 
-    public ArrayList<Mp3> initFiles(int readFiles) {
+    public ArrayList<Mp3Bean> initFiles(int readFiles) {
 
-        ArrayList<Mp3> list = new ArrayList();
+        ArrayList<Mp3Bean> list = new ArrayList();
         File[] fileList = uploadDir.listFiles();
 
         for (int i = 0; i <= readFiles - 1; i++) {
             File file = fileList[i].getAbsoluteFile();
             if (file.isFile()) {
                 try {
-                    Mp3 mp3 = new Mp3();
+                    Mp3Bean mp3 = new Mp3Bean();
                     Mp3Artist mp3artist = new Mp3Artist();
 
                     mp3artist.setArtistName(this.readArtist(file));

@@ -6,12 +6,14 @@
 
 package fh.ostfalia.projekt2014.musicserviceremoteinterface.entities;
 
-import java.util.Set;
+
+import javax.ejb.Remote;
 
 /**
  *
  * @author Mettbrötchen
  */
+@Remote
 public interface Mp3Artist {
     public int getArtistId();
     public void setArtistId(int artist_id);

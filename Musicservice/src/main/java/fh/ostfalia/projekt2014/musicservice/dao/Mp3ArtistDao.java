@@ -6,7 +6,7 @@
 package fh.ostfalia.projekt2014.musicservice.dao;
 
 
-import fh.ostfalia.projekt2014.musicservice.entities.Mp3;
+import fh.ostfalia.projekt2014.musicservice.entities.Mp3Bean;
 import fh.ostfalia.projekt2014.musicservice.entities.Mp3Artist;
 import fh.ostfalia.projekt2014.musicservice.util.Id3Tag;
 import java.io.File;
@@ -52,7 +52,7 @@ public class Mp3ArtistDao {
 
         Mp3Artist mp3ArtistBean;
 
-        Mp3 mp3Bean = new Mp3();
+        Mp3Bean mp3Bean = new Mp3Bean();
         mp3Bean = id3.readMp3File(file);
         System.out.println(mp3Bean.getMp3Title());
 
@@ -73,7 +73,7 @@ public class Mp3ArtistDao {
     }
 
     public String getMp3ArtistNameByMp3Id(int mp3Id) {
-         return em.find(Mp3.class, mp3Id).getMp3ArtistBean().getArtistName();
+         return em.find(Mp3Bean.class, mp3Id).getMp3ArtistBean().getArtistName();
     }
     
      public String getMp3ArtistNameByArtistBean(Mp3Artist mp3Artist) {
