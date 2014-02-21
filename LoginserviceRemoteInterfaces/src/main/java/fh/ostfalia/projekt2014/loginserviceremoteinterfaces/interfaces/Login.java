@@ -9,10 +9,7 @@ import javax.ejb.Remote;
 @Remote
 public interface Login {
 
-    public String login(String username, String password);
-    public void printSth();
-    public boolean logout();
-    public boolean registration();
-    
+    public String addUser(String username, String password);
+      
 }
 
