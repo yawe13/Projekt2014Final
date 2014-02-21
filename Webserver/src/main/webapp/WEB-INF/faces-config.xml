@@ -9,8 +9,8 @@
         <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
     <managed-bean>
-        <managed-bean-name>loadbalancerMBean</managed-bean-name>
-        <managed-bean-class>fh.ostfalia.projekt2014.loginservice.LoadbalancerMBean</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
+        <managed-bean-name>LoadbalancerMBean</managed-bean-name>
+        <managed-bean-class>fh.ostfalia.projekt2014.loadbalancer.LoadbalancerMBean</managed-bean-class>
+    
+        <managed-bean-scope>request</managed-bean-scope></managed-bean>
 </faces-config>
