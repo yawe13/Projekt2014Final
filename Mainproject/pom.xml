@@ -13,7 +13,6 @@
         <module>../LoginserviceRemoteInterfaces</module>
         <module>../Musicservice</module>
         <module>../Musicservice2</module>
-        <module>../MusicServiceInterface</module>
         <module>../MusicserviceRemoteInterfaces</module>
         <module>../Webserver</module>
         <module>../Loginservice</module>
