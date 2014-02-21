@@ -18,5 +18,5 @@
         <managed-bean-class>fh.ostfalia.projekt2014.musicservice.MusicserviceMBean</managed-bean-class>
     
         <managed-bean-scope>request</managed-bean-scope>
-</managed-bean>  
+    </managed-bean> 
 </faces-config>

@@ -22,14 +22,12 @@ and open the template in the editor.
                     <th>Download</th>
                 </tr>
                 <tr>
-                    <jsp:forEach items="${MusicserviceMBean.allMp3s}" var="mp3">
+                    <jsp:forEach items="${MusicserviceMBean.allMp3BeansRemote}" var="mp3">
                         <tr>
-                            <td>#{mp3.mp3Title}</td>
-                            <td><h:link outcome="view_artist" value="#{MusicserviceMBean.getMp3ArtistNameByMp3Id(mp3.mp3Id)}"><f:param name="id" value="#{mp3.artistId}"/></h:link></td>
-                            <td><h:link outcome="view_mp3" value="Show"><f:param name="id" value="#{mp3.mp3Id}"/></h:link></td>
-                            <td><h:link value="download"/></td>
+                            <td>${mp3.artistName}</td>
+                            
                         </tr>
-                    </jsp:forEach>
+                    </jsp:forEach>        
                 </tr>
             </table>
             <br/>

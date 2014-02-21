@@ -5,22 +5,16 @@
  */
 package fh.ostfalia.projekt2014.musicservice.dao;
 
+
+import fh.ostfalia.projekt2014.musicservice.entities.Mp3Bean;
 import fh.ostfalia.projekt2014.musicserviceremoteinterface.entities.Mp3;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
-import javax.transaction.UserTransaction;
+
 
 /**
  *
@@ -53,9 +47,9 @@ public class Mp3Dao {
         em.remove(getMp3(mp3_id));
     }
 
-    public Mp3 getMp3(int mp3_id) {
+    public Mp3Bean getMp3(int mp3_id) {
         System.out.println("GET MP333333333333");
-        return em.find(Mp3.class, mp3_id);
+        return em.find(Mp3Bean.class, mp3_id);
     }
 
     public Mp3 getMp3ByArtist(int mp3ArtistId) {
@@ -73,12 +67,17 @@ public class Mp3Dao {
     }
 
     public byte[] getMp3File(int mp3Id) {
-        return em.find(Mp3.class, mp3Id).getMp3File();
+        return em.find(Mp3Bean.class, mp3Id).getMp3File();
     }
 
     public List<Mp3> getAllMp3s() {
         System.out.println("MP3 DAOOOOOOO");
-        return em.createNamedQuery("Mp3.getAll").getResultList();
+        List<Mp3> mp3List =  em.createNamedQuery("Mp3.getAll").getResultList();
+  
+        
+       
+        
+        return mp3List;
     }
 
     // Methoden zum Extrahieren der Id aus der URI, um Mp3 zu identifizieren 

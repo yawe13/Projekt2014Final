@@ -24,6 +24,11 @@ import javax.servlet.http.Part;
 public class MusicserviceMBean extends RemoteManagedBean implements Musicservice {
 
     private Musicservice musicserviceBean;
+    List<Mp3> mp3List;
+    List<Mp3BeanClient> mp3BeanClientList;
+   
+   
+    private Mp3BeanClient mp3MBean;
 
     public MusicserviceMBean() {
         super("localhost", "3700", "java:global/Musicservice/MusicserviceBean");
@@ -37,56 +42,6 @@ public class MusicserviceMBean extends RemoteManagedBean implements Musicservice
     }
 
     @Override
-    public Mp3 getMp3(int mp3_id) {
-        return musicserviceBean.getMp3(mp3_id);
-    }
-
-    @Override
-    public String getMp3Title(int mp3_id) {
-        return musicserviceBean.getMp3Title(mp3_id);
-    }
-
-    @Override
-    public Mp3 getMp3ByArtist(int mp3ArtistId) {
-        return musicserviceBean.getMp3ByArtist(mp3ArtistId);
-    }
-
-    @Override
-    public int getMp3ArtistIdByMp3Id(int mp3_id) {
-        return musicserviceBean.getMp3ArtistIdByMp3Id(mp3_id);
-    }
-
-    @Override
-    public List<Mp3> getAllMp3s() {
-        return musicserviceBean.getAllMp3s();
-    }
-
-    @Override
-    public Mp3Artist getMp3ArtistBean(int artistId) {
-        return musicserviceBean.getMp3ArtistBean(artistId);
-    }
-
-    @Override
-    public String getMp3ArtistNameByArtistBean(Mp3Artist mp3Artist) {
-        return musicserviceBean.getMp3ArtistNameByArtistBean(mp3Artist);
-    }
-
-    @Override
-    public String getMp3ArtistNameByMp3Id(int mp3Id) {
-        return musicserviceBean.getMp3ArtistNameByMp3Id(mp3Id);
-    }
-
-    @Override
-    public List<Mp3Artist> getAllMp3Artists() {
-        return musicserviceBean.getAllMp3Artists();
-    }
-
-    @Override
-    public Part getPart() {
-        return musicserviceBean.getPart();
-    }
-
-    @Override
     public void upload() {
         musicserviceBean.upload();
     }
@@ -95,4 +50,29 @@ public class MusicserviceMBean extends RemoteManagedBean implements Musicservice
     public String getPassedParameter() {
         return musicserviceBean.getPassedParameter();
     }
+
+    @Override
+    public Mp3 getMp3(int mp3Id) {
+        return musicserviceBean.getMp3(mp3Id);
+    }
+    
+
+   
+    public List<Mp3BeanClient> getAllMp3BeansRemote() {
+        mp3List = musicserviceBean.getAllMp3s();
+        
+       
+        for(int i=0;i<=mp3List.size();i++){
+            mp3BeanClientList.add((Mp3BeanClient) mp3List.get(i));
+          
+        }
+        return mp3BeanClientList;
+    }
+
+    @Override
+    public List<Mp3> getAllMp3s() {
+        return null;
+    }
+
+ 
 }

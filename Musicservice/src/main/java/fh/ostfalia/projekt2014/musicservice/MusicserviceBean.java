@@ -7,6 +7,7 @@ package fh.ostfalia.projekt2014.musicservice;
 
 import fh.ostfalia.projekt2014.musicservice.dao.Mp3ArtistDao;
 import fh.ostfalia.projekt2014.musicservice.dao.Mp3Dao;
+import fh.ostfalia.projekt2014.musicservice.entities.Mp3Bean;
 
 //import fh.ostfalia.projekt2014.musicservice.entities.Mp3;
 //import fh.ostfalia.projekt2014.musicservice.entities.Mp3Artist;
@@ -24,7 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.servlet.http.Part;
+
 
 /**
  *
@@ -33,7 +34,7 @@ import javax.servlet.http.Part;
 @Stateless
 public class MusicserviceBean implements Serializable, Musicservice {
     @EJB
-    private Mp3Dao mp3;
+    private Mp3Dao mp3Dao;
     
     private Mp3ArtistDao mp3artist;
     private List <Mp3Artist> lArtists;
@@ -43,44 +44,19 @@ public class MusicserviceBean implements Serializable, Musicservice {
     }
 
     @Override
-    public Mp3 getMp3(int mp3_id) {
-        return mp3.getMp3(mp3_id);
+    public Mp3Bean getMp3(int mp3_id) {
+        return mp3Dao.getMp3(mp3_id);
     }
 
-    @Override
-    public String getMp3Title(int mp3_id) {
-        return mp3.getMp3Title(mp3_id);
-    }
-   @Override
-    public Mp3 getMp3ByArtist(int mp3ArtistId) {
-        return mp3.getMp3ByArtist(mp3ArtistId);
-    }
+   
 
     @Override
-    public int getMp3ArtistIdByMp3Id(int mp3_id) {
-        return mp3.getMp3ArtistIdByMp3Id(mp3_id);
-    }
-
-    @Override
-    public List<Mp3> getAllMp3s() {
+      public List<Mp3> getAllMp3s() {
         System.out.println("BIN IN GETALLMP3S Drin!!!!");
-        return mp3.getAllMp3s();
+        return mp3Dao.getAllMp3s();
     }
 
-    @Override
-    public Mp3Artist getMp3ArtistBean(int artistId) {
-        return (Mp3Artist) mp3artist.getMp3ArtistBean(artistId);
-    }
-
-    @Override
-    public String getMp3ArtistNameByMp3Id(int mp3Id) {
-        return mp3artist.getMp3ArtistNameByMp3Id(mp3Id);
-    }
-
-    @Override
-    public Part getPart() {
-        return mp3artist.getPart();
-    }
+   
 
     @Override
     public void upload() {
@@ -96,15 +72,7 @@ public class MusicserviceBean implements Serializable, Musicservice {
         return mp3artist.getPassedParameter();
     }
     
-    @Override
-    public List<Mp3Artist> getAllMp3Artists() {
-        List l = mp3artist.getAllMp3Artists();
-            
-        for(int i = 0; i <= l.size(); i++){
-            lArtists.add((Mp3Artist) mp3artist.getAllMp3Artists().get(i));
-        }    
-        return lArtists;
-    }
+
     
     /*
     @Override
@@ -112,12 +80,11 @@ public class MusicserviceBean implements Serializable, Musicservice {
         return null;
     }
     */
+
+   
     
     
-    @Override
-    public String getMp3ArtistNameByArtistBean(Mp3Artist mp3Artist) {
-        return mp3artist.getMp3ArtistNameByArtistBean((fh.ostfalia.projekt2014.musicservice.entities.Mp3Artist) mp3Artist);
-    }
+  
 
 
 
