@@ -10,6 +10,7 @@ import fh.ostfalia.projekt2014.musicservice.entities.Mp3Bean;
 import fh.ostfalia.projekt2014.musicserviceremoteinterface.entities.Mp3;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
@@ -21,7 +22,7 @@ import javax.persistence.PersistenceContext;
  * @author David
  */
 @Stateless
-public class Mp3Dao {
+public class Mp3DaoImpl implements Mp3DaoLocal{
 
     @PersistenceContext
     private EntityManager em;
@@ -69,11 +70,12 @@ public class Mp3Dao {
     public byte[] getMp3File(int mp3Id) {
         return em.find(Mp3Bean.class, mp3Id).getMp3File();
     }
-
-    public List<Mp3> getAllMp3s() {
+    @Override
+    public List<Mp3> getAllMp3() {
+        
         System.out.println("MP3 DAOOOOOOO");
         List<Mp3> mp3List =  em.createNamedQuery("Mp3.getAll").getResultList();
-  
+        System.out.println("SQL wurde ausgefuehrt!!");
         
        
         

@@ -6,7 +6,9 @@
 package fh.ostfalia.projekt2014.musicservice;
 
 import fh.ostfalia.projekt2014.musicservice.dao.Mp3ArtistDao;
-import fh.ostfalia.projekt2014.musicservice.dao.Mp3Dao;
+import fh.ostfalia.projekt2014.musicservice.dao.Mp3DaoImpl;
+import fh.ostfalia.projekt2014.musicservice.dao.Mp3DaoLocal;
+import fh.ostfalia.projekt2014.musicservice.entities.Mp3Artist;
 import fh.ostfalia.projekt2014.musicservice.entities.Mp3Bean;
 
 //import fh.ostfalia.projekt2014.musicservice.entities.Mp3;
@@ -14,7 +16,7 @@ import fh.ostfalia.projekt2014.musicservice.entities.Mp3Bean;
 
 import fh.ostfalia.projekt2014.musicserviceremoteinterface.interfaces.Musicservice;
 import fh.ostfalia.projekt2014.musicserviceremoteinterface.entities.Mp3;
-import fh.ostfalia.projekt2014.musicserviceremoteinterface.entities.Mp3Artist;
+
 
 
 
@@ -32,19 +34,16 @@ import javax.ejb.Stateless;
  * @author Mettbrötchen
  */
 @Stateless
-public class MusicserviceBean implements Serializable, Musicservice {
+public class MusicserviceBean implements Musicservice {
     @EJB
-    private Mp3Dao mp3Dao;
+    private Mp3DaoLocal mp3Dao;
     
-    private Mp3ArtistDao mp3artist;
+    //private Mp3ArtistDao mp3artist;
     private List <Mp3Artist> lArtists;
-    public MusicserviceBean() {
-        //mp3 = new Mp3Dao();
-        mp3artist = new Mp3ArtistDao();
-    }
+
 
     @Override
-    public Mp3Bean getMp3(int mp3_id) {
+    public Mp3 getMp3(int mp3_id) {
         return mp3Dao.getMp3(mp3_id);
     }
 
@@ -53,25 +52,22 @@ public class MusicserviceBean implements Serializable, Musicservice {
     @Override
       public List<Mp3> getAllMp3s() {
         System.out.println("BIN IN GETALLMP3S Drin!!!!");
-        return mp3Dao.getAllMp3s();
+        return mp3Dao.getAllMp3();
     }
 
    
 
     @Override
     public void upload() {
-        try {
-            mp3artist.upload();
-        } catch (IOException ex) {
-            Logger.getLogger(MusicserviceBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
+      
     }
 
     @Override
     public String getPassedParameter() {
-        return mp3artist.getPassedParameter();
+        //return mp3artist.getPassedParameter();
+        return null; 
     }
-    
+   
 
     
     /*
@@ -80,12 +76,5 @@ public class MusicserviceBean implements Serializable, Musicservice {
         return null;
     }
     */
-
-   
-    
-    
-  
-
-
 
 }

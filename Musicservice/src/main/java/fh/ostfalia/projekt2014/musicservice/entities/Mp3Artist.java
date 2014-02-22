@@ -34,11 +34,12 @@ import javax.persistence.OneToMany;
     @NamedQuery(name = "Mp3Artist.getAll", query = "SELECT e FROM Mp3Artist e")})
 
 public class Mp3Artist implements Serializable {
-
+    private static final long serialVersionUID = 1L;
     private int artistId;
     private String artistName;
     private Set<Mp3Bean> mp3Beans = new HashSet();
-    
+     
+     
     public Mp3Artist(){
     }
 
