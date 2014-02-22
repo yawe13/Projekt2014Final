@@ -12,7 +12,7 @@ import javax.ejb.Remote;
  *
  * @author Mettbrötchen
  */
-@Remote
+
 public interface Mp3 {
     
     public int getArtistId();
