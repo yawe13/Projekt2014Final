@@ -8,7 +8,7 @@ package fh.ostfalia.projekt2014.musicservice;
 import fh.ostfalia.projekt2014.beanmanager.RemoteManagedBean;
 import fh.ostfalia.projekt2014.loginserviceremoteinterfaces.interfaces.Login;
 import fh.ostfalia.projekt2014.musicserviceremoteinterface.entities.Mp3;
-import fh.ostfalia.projekt2014.musicserviceremoteinterface.entities.Mp3Artist;
+
 import fh.ostfalia.projekt2014.musicserviceremoteinterface.interfaces.Musicservice;
 import java.io.IOException;
 import java.util.List;
@@ -62,7 +62,8 @@ public class MusicserviceMBean extends RemoteManagedBean implements Musicservice
         mp3List = musicserviceBean.getAllMp3s();
         
        
-        for(int i=0;i<=mp3List.size();i++){
+        for(int i=0;i<=mp3List.size()-1;i++){
+            System.out.println("MusicserviceMBean: Groesse: " + mp3List.size());
             mp3BeanClientList.add((Mp3BeanClient) mp3List.get(i));
           
         }

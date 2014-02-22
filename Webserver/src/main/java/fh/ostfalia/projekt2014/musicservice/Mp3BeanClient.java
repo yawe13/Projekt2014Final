@@ -18,6 +18,8 @@ public class Mp3BeanClient implements Mp3 {
      private int artistId;
      private String mp3Title;
      private String artistName;
+
+  
     /**
      * Creates a new instance of Mp3ManagedBean
      */
