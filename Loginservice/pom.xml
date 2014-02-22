@@ -14,8 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         
         <yDoc.path>C:\Users\Yannick\Desktop\yworks-uml-doclet-3.0_02-jdk1.5</yDoc.path>
-         
-   
+        <netbeans.hint.deploy.server>gfv3ee6</netbeans.hint.deploy.server>
     </properties>
 
     <dependencies>
