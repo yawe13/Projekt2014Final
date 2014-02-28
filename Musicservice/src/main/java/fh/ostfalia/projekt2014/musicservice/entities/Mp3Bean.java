@@ -31,9 +31,6 @@ import javax.persistence.NamedQuery;
  */
 
 @Entity(name = "Mp3")
-@NamedQueries({
-    @NamedQuery(name = "Mp3.getAll", query = "SELECT e FROM Mp3 e")})
-
 public class Mp3Bean implements Serializable, Mp3{
   private static final long serialVersionUID = 1L;
     

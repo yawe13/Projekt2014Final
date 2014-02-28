@@ -6,73 +6,40 @@
 package fh.ostfalia.projekt2014.musicservice;
 
 import fh.ostfalia.projekt2014.beanmanager.RemoteManagedBean;
-import fh.ostfalia.projekt2014.loginserviceremoteinterfaces.interfaces.Login;
 import fh.ostfalia.projekt2014.musicserviceremoteinterface.entities.Mp3;
-
 import fh.ostfalia.projekt2014.musicserviceremoteinterface.interfaces.Musicservice;
-import java.io.IOException;
+
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import javax.servlet.http.Part;
+
 
 /**
  *
  * @author Mettbrötchen
  */
-public class MusicserviceMBean extends RemoteManagedBean implements Musicservice {
+public class MusicserviceMBean extends RemoteManagedBean {
 
-    private Musicservice musicserviceBean;
-    List<Mp3> mp3List;
-    List<Mp3BeanClient> mp3BeanClientList;
-   
-   
-    private Mp3BeanClient mp3MBean;
-
-    public MusicserviceMBean() {
-        super("localhost", "3700", "java:global/Musicservice/MusicserviceBean");
+     public MusicserviceMBean() {
+        super("localhost", "3700", "java:global/Webserver/MusicserviceBean");
         System.out.println("ENDELookup");
     }
-
+     private Musicservice musicserviceBean;
+     
     @PostConstruct
     public void initBean() {
         //Holen der entfernten Loginbean bzw. deren Stub-Objekt
         musicserviceBean = (Musicservice) super.getObject();
     }
-
-    @Override
-    public void upload() {
-        musicserviceBean.upload();
+    public Musicservice getMusicserviceBean() {
+        return musicserviceBean;
     }
 
-    @Override
-    public String getPassedParameter() {
-        return musicserviceBean.getPassedParameter();
+    public void setMusicserviceBean(Musicservice musicserviceBean) {
+        this.musicserviceBean = musicserviceBean;
     }
-
-    @Override
-    public Mp3 getMp3(int mp3Id) {
-        return musicserviceBean.getMp3(mp3Id);
-    }
-    
-
-   
-    public List<Mp3BeanClient> getAllMp3BeansRemote() {
-        mp3List = musicserviceBean.getAllMp3s();
-        
-       
-        for(int i=0;i<=mp3List.size()-1;i++){
-            System.out.println("MusicserviceMBean: Groesse: " + mp3List.size());
-            mp3BeanClientList.add((Mp3BeanClient) mp3List.get(i));
-          
-        }
-        return mp3BeanClientList;
-    }
-
-    @Override
+ 
     public List<Mp3> getAllMp3s() {
-        return null;
+        return musicserviceBean.getAllMp3s();
     }
 
  

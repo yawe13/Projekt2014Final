@@ -8,13 +8,16 @@ package fh.ostfalia.projekt2014.musicservice.dao;
 
 import fh.ostfalia.projekt2014.musicservice.entities.Mp3Bean;
 import fh.ostfalia.projekt2014.musicserviceremoteinterface.entities.Mp3;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 
 /**
@@ -22,8 +25,8 @@ import javax.persistence.PersistenceContext;
  * @author David
  */
 @Stateless
-public class Mp3DaoImpl implements Mp3DaoLocal{
-
+public class Mp3DaoImpl implements Mp3DaoLocal,Serializable{
+     private static final long serialVersionUID = 1L;
     @PersistenceContext
     private EntityManager em;
     //@Resource
@@ -72,14 +75,12 @@ public class Mp3DaoImpl implements Mp3DaoLocal{
     }
     @Override
     public List<Mp3> getAllMp3() {
-        
         System.out.println("MP3 DAOOOOOOO");
-        List<Mp3> mp3List =  em.createNamedQuery("Mp3.getAll").getResultList();
+        Query queryMp3List =  em.createQuery("SELECT e FROM Mp3 e");
+        System.out.println("Queryyyyyyyyyyyy");
+        List<Mp3Bean> mp3BeanList = queryMp3List.getResultList();
         System.out.println("SQL wurde ausgefuehrt!!");
-        
-       
-        
-        return mp3List;
+        return new LinkedList<Mp3> (mp3BeanList);
     }
 
     // Methoden zum Extrahieren der Id aus der URI, um Mp3 zu identifizieren 

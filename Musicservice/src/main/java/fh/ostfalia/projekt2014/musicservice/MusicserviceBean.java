@@ -5,11 +5,10 @@
  */
 package fh.ostfalia.projekt2014.musicservice;
 
-import fh.ostfalia.projekt2014.musicservice.dao.Mp3ArtistDao;
-import fh.ostfalia.projekt2014.musicservice.dao.Mp3DaoImpl;
+
 import fh.ostfalia.projekt2014.musicservice.dao.Mp3DaoLocal;
 import fh.ostfalia.projekt2014.musicservice.entities.Mp3Artist;
-import fh.ostfalia.projekt2014.musicservice.entities.Mp3Bean;
+
 
 //import fh.ostfalia.projekt2014.musicservice.entities.Mp3;
 //import fh.ostfalia.projekt2014.musicservice.entities.Mp3Artist;
@@ -20,11 +19,9 @@ import fh.ostfalia.projekt2014.musicserviceremoteinterface.entities.Mp3;
 
 
 
-import java.io.IOException;
+
 import java.io.Serializable;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -35,6 +32,7 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class MusicserviceBean implements Musicservice {
+
     @EJB
     private Mp3DaoLocal mp3Dao;
     

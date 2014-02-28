@@ -22,7 +22,7 @@ and open the template in the editor.
                     <th>Download</th>
                 </tr>
                 <tr>
-                    <jsp:forEach items="${MusicserviceMBean.allMp3BeansRemote}" var="mp3">
+                    <jsp:forEach items="${MusicserviceMBean.musicserviceBean.allMp3s}" var="mp3">
                         <tr>
                             <td>${mp3.mp3Title}</td>
                             
