@@ -7,7 +7,7 @@ package fh.ostfalia.projekt2014.musicservice;
 
 
 import fh.ostfalia.projekt2014.musicservice.dao.Mp3DaoLocal;
-import fh.ostfalia.projekt2014.musicservice.entities.Mp3Artist;
+import fh.ostfalia.projekt2014.musicservice.entities.Mp3ArtistBean;
 
 
 //import fh.ostfalia.projekt2014.musicservice.entities.Mp3;
@@ -37,7 +37,7 @@ public class MusicserviceBean implements Musicservice {
     private Mp3DaoLocal mp3Dao;
     
     //private Mp3ArtistDao mp3artist;
-    private List <Mp3Artist> lArtists;
+    private List <Mp3ArtistBean> lArtists;
 
 
     @Override

@@ -7,7 +7,7 @@ package fh.ostfalia.projekt2014.musicservice.dao;
 
 
 import fh.ostfalia.projekt2014.musicservice.entities.Mp3Bean;
-import fh.ostfalia.projekt2014.musicservice.entities.Mp3Artist;
+import fh.ostfalia.projekt2014.musicservice.entities.Mp3ArtistBean;
 import fh.ostfalia.projekt2014.musicservice.util.Id3Tag;
 import java.io.File;
 import java.io.IOException;
@@ -42,7 +42,7 @@ public class Mp3ArtistDao {
     private Id3Tag id3;
     private Part part;
 
-    public void persistMp3Artist(Mp3Artist mp3Artist) {
+    public void persistMp3Artist(Mp3ArtistBean mp3Artist) {
             em.persist(mp3Artist);
     }
 
@@ -50,7 +50,7 @@ public class Mp3ArtistDao {
         id3 = new Id3Tag();
         File file = new File("C:\\Users\\Mettbrötchen\\Documents\\NetBeansProjects\\Projekt2014Final\\Musicservice\\Upload\\" + part.getSubmittedFileName());
 
-        Mp3Artist mp3ArtistBean;
+        Mp3ArtistBean mp3ArtistBean;
 
         Mp3Bean mp3Bean = new Mp3Bean();
         mp3Bean = id3.readMp3File(file);
@@ -68,19 +68,19 @@ public class Mp3ArtistDao {
         em.remove(getMp3ArtistBean(mp3ArtistId));
     }
 
-    public Mp3Artist getMp3ArtistBean(int artistId) {
-        return em.find(Mp3Artist.class, artistId);
+    public Mp3ArtistBean getMp3ArtistBean(int artistId) {
+        return em.find(Mp3ArtistBean.class, artistId);
     }
 
     public String getMp3ArtistNameByMp3Id(int mp3Id) {
          return em.find(Mp3Bean.class, mp3Id).getMp3ArtistBean().getArtistName();
     }
     
-     public String getMp3ArtistNameByArtistBean(Mp3Artist mp3Artist) {
+     public String getMp3ArtistNameByArtistBean(Mp3ArtistBean mp3Artist) {
          return mp3Artist.getArtistName();
     }
 
-    public List<Mp3Artist> getAllMp3Artists() {
+    public List<Mp3ArtistBean> getAllMp3Artists() {
         return em.createNamedQuery("Mp3Artist.getAll").getResultList();
     }
 

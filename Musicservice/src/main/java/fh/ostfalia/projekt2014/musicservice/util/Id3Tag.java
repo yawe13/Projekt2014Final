@@ -6,7 +6,7 @@
 package fh.ostfalia.projekt2014.musicservice.util;
 
 import fh.ostfalia.projekt2014.musicservice.entities.Mp3Bean;
-import fh.ostfalia.projekt2014.musicservice.entities.Mp3Artist;
+import fh.ostfalia.projekt2014.musicservice.entities.Mp3ArtistBean;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -26,17 +26,17 @@ public class Id3Tag {
     private MP3File mp3file;
     private final File uploadDir;
     private Mp3Bean mp3;
-    Mp3Artist mp3Artist;
+    Mp3ArtistBean mp3Artist;
 
     public Id3Tag() {
         mp3 = new Mp3Bean();
-        mp3Artist = new Mp3Artist();
+        mp3Artist = new Mp3ArtistBean();
         uploadDir = new File("C:\\Users\\Mettbrötchen\\Documents\\NetBeansProjects\\Projekt2014Final\\Musicservice\\Upload");
     }
 
     public Id3Tag(String customUploadPath) {
         mp3 = new Mp3Bean();
-        mp3Artist = new Mp3Artist();
+        mp3Artist = new Mp3ArtistBean();
         uploadDir = new File(customUploadPath);
     }
 
@@ -79,7 +79,7 @@ public class Id3Tag {
             if (file.isFile()) {
                 try {
                     Mp3Bean mp3 = new Mp3Bean();
-                    Mp3Artist mp3artist = new Mp3Artist();
+                    Mp3ArtistBean mp3artist = new Mp3ArtistBean();
 
                     mp3artist.setArtistName(this.readArtist(file));
                     

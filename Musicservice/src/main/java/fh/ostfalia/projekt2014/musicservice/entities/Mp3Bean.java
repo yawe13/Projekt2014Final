@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -32,9 +33,10 @@ import javax.persistence.NamedQuery;
 
 @Entity(name = "Mp3")
 public class Mp3Bean implements Serializable, Mp3{
+    
   private static final long serialVersionUID = 1L;
     
-    private Mp3Artist mp3Artist;
+    private Mp3ArtistBean mp3Artist;
     private int mp3Id;
     private byte[] mp3File;
     private String mp3Title;
@@ -42,7 +44,7 @@ public class Mp3Bean implements Serializable, Mp3{
     public Mp3Bean() {
     }
 
-    public Mp3Bean(Mp3Artist mp3Artist, byte[] mp3File, String mp3Title) {
+    public Mp3Bean(Mp3ArtistBean mp3Artist, byte[] mp3File, String mp3Title) {
         this.mp3Artist = mp3Artist;
         this.mp3File = mp3File;
         this.mp3Title = mp3Title;
@@ -82,14 +84,15 @@ public class Mp3Bean implements Serializable, Mp3{
         this.mp3Title = mp3_title;
 
     }
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    
+    @Id
+    @ManyToOne(targetEntity=Mp3ArtistBean.class)
     @JoinColumn(name = "artist_id", nullable = false)
-    public Mp3Artist getMp3ArtistBean() {
+    public Mp3ArtistBean getMp3ArtistBean() {
         return this.mp3Artist;
     }
 
-    public void setMp3ArtistBean(Mp3Artist mp3Artist) {
+    public void setMp3ArtistBean(Mp3ArtistBean mp3Artist) {
         this.mp3Artist = mp3Artist;
     }
     

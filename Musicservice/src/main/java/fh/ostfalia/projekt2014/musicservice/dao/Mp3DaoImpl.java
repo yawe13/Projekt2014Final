@@ -25,7 +25,7 @@ import javax.persistence.Query;
  * @author David
  */
 @Stateless
-public class Mp3DaoImpl implements Mp3DaoLocal,Serializable{
+public class Mp3DaoImpl implements Mp3DaoLocal{
      private static final long serialVersionUID = 1L;
     @PersistenceContext
     private EntityManager em;
@@ -75,12 +75,9 @@ public class Mp3DaoImpl implements Mp3DaoLocal,Serializable{
     }
     @Override
     public List<Mp3> getAllMp3() {
-        System.out.println("MP3 DAOOOOOOO");
         Query queryMp3List =  em.createQuery("SELECT e FROM Mp3 e");
-        System.out.println("Queryyyyyyyyyyyy");
         List<Mp3Bean> mp3BeanList = queryMp3List.getResultList();
-        System.out.println("SQL wurde ausgefuehrt!!");
-        return new LinkedList<Mp3> (mp3BeanList);
+        return new LinkedList<Mp3>(mp3BeanList);
     }
 
     // Methoden zum Extrahieren der Id aus der URI, um Mp3 zu identifizieren 
