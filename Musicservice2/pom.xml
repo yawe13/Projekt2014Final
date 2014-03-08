@@ -3,23 +3,55 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fh.ostfalia.projekt2014</groupId>
-    <artifactId>Musicservice2</artifactId>
+    <artifactId>Musicservice</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>ejb</packaging>
 
-    <name>Musicservice2</name>
+    <name>Musicservice</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <netbeans.hint.deploy.server>gfv3ee6</netbeans.hint.deploy.server>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>fh.ostfalia.projekt2014</groupId>
+            <artifactId>MusicserviceRemoteInterfaces</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>eclipselink</artifactId>
+            <version>2.5.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
+            <version>2.5.1</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jid3</groupId>
+            <artifactId>jid3lib</artifactId>
+            <version>0.5.4</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/jid3lib.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.6</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/mysql-connector-java-5.0.8-bin.jar</systemPath>
         </dependency>
     </dependencies>
 
@@ -42,6 +74,7 @@
                 <artifactId>maven-ejb-plugin</artifactId>
                 <version>2.3</version>
                 <configuration>
+                    <packagingIncludes>${basedir}/lib/*.jar</packagingIncludes>
                     <ejbVersion>3.1</ejbVersion>
                 </configuration>
             </plugin>
