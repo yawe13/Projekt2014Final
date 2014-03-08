@@ -8,23 +8,36 @@ import fh.ostfalia.projekt2014.loadbalancer.remote.Musicservice1Remote;
 import fh.ostfalia.projekt2014.loadbalancer.remote.Musicservice2Remote;
 import fh.ostfalia.projekt2014.loadbalancerremoteinterfaces.entities.LoadbalancerResult;
 import fh.ostfalia.projekt2014.loadbalancerremoteinterfaces.interfaces.Loadbalancer;
+import fh.ostfalia.projekt2014.musicserviceremoteinterface.interfaces.Musicservice;
+import javax.ejb.EJB;
 import javax.ejb.Stateful;
-import javax.ejb.LocalBean;
+
 
 /**
  *
  * @author Yannick
  */
 @Stateful
-@LocalBean
 public class LoadbalancerBean implements Loadbalancer{
-    private Musicservice1Remote musicservice1;
-    private Musicservice2Remote musicservice2;
+    
+
+    public LoadbalancerResult loadbalancerResult;
+   
+    private int requests;
+    private Musicservice targetMusicService;
     
     @Override
     public LoadbalancerResult startLoadbalancerSimulation() {
-        
-        return null;
-        
+        requests = (int)((Math.random()*20)+1);
+        System.out.println("Anzahl der Aufrufe: " + requests);
+   
+        return null;  
     }
+
+    @Override
+    public LoadbalancerResult startLoadbalancerSimulationByTime() {
+        return null;
+    }
+    
+    
 }

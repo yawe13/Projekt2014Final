@@ -55,6 +55,11 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>Loadbalancer</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
@@ -65,7 +70,7 @@
             <artifactId>jid3lib</artifactId>
             <version>0.5.4</version>
             <scope>system</scope>
-            <systemPath>C:/Users/Mettbroetchen/Documents/NetBeansProjects/Projekt2014Final/Webserver/lib/jid3lib.jar</systemPath>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jid3lib.jar</systemPath>
         </dependency>
     </dependencies>
 

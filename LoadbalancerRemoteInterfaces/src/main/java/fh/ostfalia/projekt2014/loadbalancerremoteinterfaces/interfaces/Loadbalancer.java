@@ -15,4 +15,5 @@ import javax.ejb.Remote;
 public interface Loadbalancer {
     
     public LoadbalancerResult startLoadbalancerSimulation();
+    public LoadbalancerResult startLoadbalancerSimulationByTime();
 }
