@@ -26,6 +26,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Transient;
 
 /**
  *
@@ -33,6 +34,7 @@ import javax.persistence.NamedQuery;
  */
 
 @Entity(name = "Mp3")
+
 public class Mp3Bean implements Serializable, Mp3{
     
   private static final long serialVersionUID = 1L;
@@ -86,12 +88,12 @@ public class Mp3Bean implements Serializable, Mp3{
 
     }
     
-    //@Id
     @ManyToOne(cascade=CascadeType.ALL ,targetEntity=Mp3ArtistBean.class)
     @JoinColumn(name = "artist_id", nullable = false)
     public Mp3ArtistBean getMp3ArtistBean() {
         return this.mp3Artist;
     }
+    
 
     public void setMp3ArtistBean(Mp3ArtistBean mp3Artist) {
         this.mp3Artist = mp3Artist;
@@ -101,6 +103,8 @@ public class Mp3Bean implements Serializable, Mp3{
     public int getArtistId(){
         return mp3Artist.getArtistId();
     }
+    
+
     
 
     public void setMp3ByteCodeFromFile(File file) {
@@ -122,11 +126,18 @@ public class Mp3Bean implements Serializable, Mp3{
         }
 
     }
+        
+    
+    public void editArtistId(int artist_id){
+        mp3Artist.setArtistId(artist_id);
+    }
 
     @Override
     public String getArtistName() {
         return mp3Artist.getArtistName();
     }
+
+    
 
 
 }

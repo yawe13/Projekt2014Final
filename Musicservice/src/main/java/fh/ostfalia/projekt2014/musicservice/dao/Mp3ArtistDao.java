@@ -18,6 +18,7 @@ import javax.ejb.Stateless;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 
 /**
@@ -69,6 +70,22 @@ public class Mp3ArtistDao implements Serializable{
 
     public void setPassedParameter(String passedParameter) {
         this.passedParameter = passedParameter;
+    }
+    
+    public int doesNameExist(String name){
+        int id = 0;
+        Query query = em.createNamedQuery("getName");
+        query.setParameter("name", name);
+        List<Mp3ArtistBean> m = query.getResultList();
+        
+        
+        if(m.size() > 0){             
+            id = m.get(0).getArtistId();
+        } 
+        
+        System.out.println("DOESEXIST?!?!?!?!: "+query.getResultList().size());
+        
+        return id;
     }
 
 

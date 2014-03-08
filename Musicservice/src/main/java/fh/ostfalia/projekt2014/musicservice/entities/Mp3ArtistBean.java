@@ -31,7 +31,10 @@ import javax.persistence.OneToMany;
 
 @Entity(name = "Mp3Artist")
 @NamedQueries({
-  @NamedQuery(name = "Mp3Artist.getAll", query = "SELECT e FROM Mp3Artist e")})
+  @NamedQuery(name = "Mp3Artist.getAll", query = "SELECT e FROM Mp3Artist e"),
+    @NamedQuery(name = "getName", query = "SELECT e FROM Mp3Artist e where e.artistName=:name")
+})
+
 public class Mp3ArtistBean implements Serializable {
     private static final long serialVersionUID = 1L;
     private int artistId;
