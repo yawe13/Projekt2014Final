@@ -60,6 +60,13 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>jid3</groupId>
+            <artifactId>jid3lib</artifactId>
+            <version>0.5.4</version>
+            <scope>system</scope>
+            <systemPath>C:/Users/Mettbroetchen/Documents/NetBeansProjects/Projekt2014Final/Webserver/lib/jid3lib.jar</systemPath>
+        </dependency>
     </dependencies>
 
     <build>
@@ -81,6 +88,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.3</version>
                 <configuration>
+                    <packagingIncludes>WEB-INF/lib/*.jar</packagingIncludes>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>

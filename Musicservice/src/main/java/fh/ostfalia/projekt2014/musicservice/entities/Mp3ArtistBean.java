@@ -76,8 +76,8 @@ public class Mp3ArtistBean implements Serializable {
     @OneToMany(cascade=CascadeType.ALL , fetch = FetchType.LAZY, mappedBy = "Mp3Bean")
     public Set<Mp3Bean> getMp3Beans() {
         return this.mp3Beans;
-    }
-    */
+    }*/
+    
 
     public void setMp3Beans(Set<Mp3Bean> mp3Beans) {
         this.mp3Beans = mp3Beans;

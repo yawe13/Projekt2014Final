@@ -9,6 +9,8 @@ package fh.ostfalia.projekt2014.musicserviceremoteinterface.interfaces;
 import fh.ostfalia.projekt2014.musicserviceremoteinterface.entities.Mp3;
 import java.util.List;
 import javax.ejb.Remote;
+import javax.servlet.http.Part;
+
 
 
 
@@ -24,5 +26,5 @@ public interface Musicservice {
     public Mp3 getMp3(int mp3Id); 
     
     public String getPassedParameter();
-    public void upload();
+    public void upload(String part);
 }

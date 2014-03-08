@@ -9,23 +9,15 @@ package fh.ostfalia.projekt2014.musicservice.dao;
 import fh.ostfalia.projekt2014.musicservice.entities.Mp3Bean;
 import fh.ostfalia.projekt2014.musicservice.entities.Mp3ArtistBean;
 import fh.ostfalia.projekt2014.musicservice.util.Id3Tag;
+
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.servlet.http.Part;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
-import javax.transaction.UserTransaction;
 
 
 /**
@@ -33,36 +25,18 @@ import javax.transaction.UserTransaction;
  * @author David
  */
 @Stateless
-public class Mp3ArtistDao {
+public class Mp3ArtistDao implements Serializable{
 
     @PersistenceContext
     private EntityManager em;
-    //@Resource
-    //UserTransaction ut;
     private Id3Tag id3;
-    private Part part;
+    private String part;
 
     public void persistMp3Artist(Mp3ArtistBean mp3Artist) {
             em.persist(mp3Artist);
     }
 
-    public void upload() throws IOException {
-        id3 = new Id3Tag();
-        File file = new File("C:\\Users\\Mettbrötchen\\Documents\\NetBeansProjects\\Projekt2014Final\\Musicservice\\Upload\\" + part.getSubmittedFileName());
 
-        Mp3ArtistBean mp3ArtistBean;
-
-        Mp3Bean mp3Bean = new Mp3Bean();
-        mp3Bean = id3.readMp3File(file);
-        System.out.println(mp3Bean.getMp3Title());
-
-        //UserDaoLocal UserDaoLocal = new UserDaoLocal();
-        mp3ArtistBean = mp3Bean.getMp3ArtistBean();
-
-        mp3ArtistBean.addMp3Bean(mp3Bean);//Zuordnung Artist->Titel(Liste von Titeln)
-
-        this.persistMp3Artist(mp3ArtistBean);
-    }
 
     public void deleteMp3Artist(int mp3ArtistId) {
         em.remove(getMp3ArtistBean(mp3ArtistId));
@@ -97,12 +71,7 @@ public class Mp3ArtistDao {
         this.passedParameter = passedParameter;
     }
 
-    public Part getPart() {
-        return part;
-    }
 
-    public void setPart(Part part) {
-        this.part = part;
-    }
+
     
 }

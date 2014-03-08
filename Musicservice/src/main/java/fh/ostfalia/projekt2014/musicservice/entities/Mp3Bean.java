@@ -18,6 +18,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -52,7 +53,7 @@ public class Mp3Bean implements Serializable, Mp3{
 
     @Id
     @Column(name = "mp3_id")
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Override
     public int getMp3Id() {
         return mp3Id;
@@ -85,8 +86,8 @@ public class Mp3Bean implements Serializable, Mp3{
 
     }
     
-    @Id
-    @ManyToOne(targetEntity=Mp3ArtistBean.class)
+    //@Id
+    @ManyToOne(cascade=CascadeType.ALL ,targetEntity=Mp3ArtistBean.class)
     @JoinColumn(name = "artist_id", nullable = false)
     public Mp3ArtistBean getMp3ArtistBean() {
         return this.mp3Artist;

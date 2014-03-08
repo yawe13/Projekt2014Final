@@ -10,6 +10,7 @@ import fh.ostfalia.projekt2014.musicservice.entities.Mp3ArtistBean;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,11 +18,13 @@ import org.farng.mp3.MP3File;
 import org.farng.mp3.TagException;
 
 
+
+
 /**
  *
  * @author Mettbrötchen
  */
-public class Id3Tag {
+public class Id3Tag implements Serializable{
 
     private MP3File mp3file;
     private final File uploadDir;
@@ -31,7 +34,7 @@ public class Id3Tag {
     public Id3Tag() {
         mp3 = new Mp3Bean();
         mp3Artist = new Mp3ArtistBean();
-        uploadDir = new File("C:\\Users\\Mettbrötchen\\Documents\\NetBeansProjects\\Projekt2014Final\\Musicservice\\Upload");
+        uploadDir = new File("C:\\Users\\Mettbroetchen\\Documents\\NetBeansProjects\\Projekt2014Final\\Musicservice\\Upload");
     }
 
     public Id3Tag(String customUploadPath) {
@@ -40,13 +43,22 @@ public class Id3Tag {
         uploadDir = new File(customUploadPath);
     }
 
-    private String readArtist(File file) throws TagException, IOException {
-        mp3file = new MP3File(file);
+    private String readArtist(File file) throws IOException {
+        try {
+            mp3file = new MP3File(file);
+            
+        } catch (TagException ex) {
+            Logger.getLogger(Id3Tag.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return mp3file.getID3v1Tag().getArtist();
     }
 
-    private String readTitle(File file) throws TagException, IOException {
-        mp3file = new MP3File(file);
+    private String readTitle(File file) throws IOException {
+        try {
+            mp3file = new MP3File(file);
+        } catch (TagException ex) {
+            Logger.getLogger(Id3Tag.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return mp3file.getID3v1Tag().getSongTitle();
     }
     
@@ -58,10 +70,7 @@ public class Id3Tag {
             mp3.setMp3Title(this.readTitle(file));
             mp3.setMp3ArtistBean(mp3Artist);
             mp3.setMp3ByteCodeFromFile(file);
-            
-            
-        } catch (TagException ex) {
-            Logger.getLogger(Id3Tag.class.getName()).log(Level.SEVERE, null, ex);
+
         } catch (IOException ex) {
             Logger.getLogger(Id3Tag.class.getName()).log(Level.SEVERE, null, ex);
         } 
@@ -97,8 +106,6 @@ public class Id3Tag {
                     //mp3.setMp3_artist(mp3artist);
                     mp3.setMp3Title(this.readTitle(file));
                     list.add(mp3);
-                } catch (TagException ex) {
-                    Logger.getLogger(Id3Tag.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
                     Logger.getLogger(Id3Tag.class.getName()).log(Level.SEVERE, null, ex);
                 }

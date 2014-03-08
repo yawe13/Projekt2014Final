@@ -44,14 +44,14 @@
             <artifactId>jid3lib</artifactId>
             <version>0.5.4</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/jid3lib-0.5.4.jar</systemPath>
+            <systemPath>${basedir}/lib/jid3lib.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.6</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/mysql-connector-java-5.0.8-bin.jar</systemPath>
+            <systemPath>${basedir}/lib/mysql-connector-java-5.0.8-bin.jar</systemPath>
         </dependency>
     </dependencies>
 
@@ -74,6 +74,7 @@
                 <artifactId>maven-ejb-plugin</artifactId>
                 <version>2.3</version>
                 <configuration>
+                    <packagingIncludes>${basedir}/lib/*.jar</packagingIncludes>
                     <ejbVersion>3.1</ejbVersion>
                 </configuration>
             </plugin>

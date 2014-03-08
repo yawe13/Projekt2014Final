@@ -11,6 +11,7 @@ import fh.ostfalia.projekt2014.musicserviceremoteinterface.interfaces.Musicservi
 
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.servlet.http.Part;
 
 
 /**
@@ -18,7 +19,7 @@ import javax.annotation.PostConstruct;
  * @author Mettbrötchen
  */
 public class MusicserviceMBean extends RemoteManagedBean {
-
+    private String part;
      public MusicserviceMBean() {
         super("localhost", "3700", "java:global/Webserver/MusicserviceBean");
         System.out.println("ENDELookup");
@@ -41,6 +42,30 @@ public class MusicserviceMBean extends RemoteManagedBean {
     public List<Mp3> getAllMp3s() {
         return musicserviceBean.getAllMp3s();
     }
+
+
+    public Mp3 getMp3(int mp3Id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    public String getPassedParameter() {
+        return musicserviceBean.getPassedParameter();
+    }
+
+    public void upload() {
+        musicserviceBean.upload(part);
+    }
+
+    public String getPart() {
+        return part;
+    }
+
+    public void setPart(String part) {
+        this.part = part;
+    }
+    
+    
 
  
 }

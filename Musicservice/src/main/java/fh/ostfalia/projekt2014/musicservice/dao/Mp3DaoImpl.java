@@ -6,8 +6,12 @@
 package fh.ostfalia.projekt2014.musicservice.dao;
 
 
+import fh.ostfalia.projekt2014.musicservice.entities.Mp3ArtistBean;
 import fh.ostfalia.projekt2014.musicservice.entities.Mp3Bean;
+import fh.ostfalia.projekt2014.musicservice.util.Id3Tag;
 import fh.ostfalia.projekt2014.musicserviceremoteinterface.entities.Mp3;
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -35,6 +39,7 @@ public class Mp3DaoImpl implements Mp3DaoLocal{
     private byte[] fileContent;
 
     private Mp3ArtistDao mp3ArtistDao;
+    private Id3Tag id3;
 
     public void addMp3List(ArrayList<Mp3> mp3BeanList) {
    
@@ -47,12 +52,15 @@ public class Mp3DaoImpl implements Mp3DaoLocal{
 
     }
 
+    public void persistMp3(Mp3Bean mp3Bean){
+        em.persist(mp3Bean);
+    }
+    
     public void deleteMp3(int mp3_id) {
         em.remove(getMp3(mp3_id));
     }
 
     public Mp3Bean getMp3(int mp3_id) {
-        System.out.println("GET MP333333333333");
         return em.find(Mp3Bean.class, mp3_id);
     }
 
@@ -96,5 +104,58 @@ public class Mp3DaoImpl implements Mp3DaoLocal{
 
     public void addMp3(Mp3 mp3) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+     @Override
+        public void upload(String part) {
+        System.out.println("StartUpload...");
+        id3 = new Id3Tag();
+        System.out.println("ID3Tag");
+        
+        System.out.println("FILE");
+        File file = new File("C:\\Users\\Mettbroetchen\\Documents\\NetBeansProjects\\Projekt2014Final\\Musicservice\\Upload\\" + getFileName(part));
+
+        //Mp3ArtistBean mp3ArtistBean;
+        Mp3Bean mp3Bean = new Mp3Bean();
+        mp3Bean = id3.readMp3File(file);
+        
+        
+        //UserDaoLocal UserDaoLocal = new UserDaoLocal();
+        //mp3ArtistBean = mp3Bean.getMp3ArtistBean();
+        //mp3ArtistBean.addMp3Bean(mp3Bean);//Zuordnung Artist->Titel(Liste von Titeln)
+        
+        this.persistMp3(mp3Bean);
+        //this.persistMp3Artist(mp3ArtistBean);
+        
+    }
+        
+            /**
+     * Wertet den String part aus, welcher aus dem Webfrontend mitgeschickt wird
+     * Sinn ist es, den Namen der Datei herauszufinden, um diesen in der Upload
+     * Methode zu verwenden
+     *
+     * @return 
+     */
+    private String getFileName(String part){
+        int startPos;
+        int lastPos;
+        String fileName;
+        /**
+         * Sucht nach dem ersten "=" im String part
+         * Dies ergibt die Startposition zum zuschneiden des Strings
+         */
+        startPos = part.indexOf("=")+1;
+        /**
+         * Sucht nach dem ersten "," welches vorkommt.
+         * Dies ergibt die Endposition zum zuschneiden des Strings
+         */
+        lastPos = part.indexOf(",");
+        
+        /**
+         * Schneidet den String so zu, dass nur noch der Name der Datei bleibt
+         */
+        fileName = part.substring(startPos, lastPos);
+        System.out.println("FILENAME: "+fileName);
+        return fileName;
     }
 }
