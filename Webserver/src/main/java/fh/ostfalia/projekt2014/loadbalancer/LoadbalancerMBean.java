@@ -7,6 +7,7 @@ package fh.ostfalia.projekt2014.loadbalancer;
 import fh.ostfalia.projekt2014.beanmanager.RemoteManagedBean;
 import fh.ostfalia.projekt2014.loadbalancerremoteinterfaces.entities.LoadbalancerResult;
 import fh.ostfalia.projekt2014.loadbalancerremoteinterfaces.interfaces.Loadbalancer;
+import java.util.concurrent.Future;
 import javax.annotation.PostConstruct;
 import javax.faces.event.ValueChangeEvent;
 
@@ -17,6 +18,7 @@ import javax.faces.event.ValueChangeEvent;
 public class LoadbalancerMBean extends RemoteManagedBean{
     private Loadbalancer loadbalancerBean;
     private LoadbalancerResult loadbalancerResult;
+    private Future asyncResult;
     //Variable die zwischen manuellem starten und stoppen des LB oder per definiertem Zeitintervall unterscheidet 
     //möglich sind manuel oder timed
     private String mode;
@@ -47,12 +49,13 @@ public class LoadbalancerMBean extends RemoteManagedBean{
 
     }
     public void startLoadbalancerSimulation(){
-        loadbalancerBean.startLoadbalancerSimulation();
+        asyncResult = loadbalancerBean.startLoadbalancerSimulation();
         
     }
     
     public void stopLoadbalancerSimulation(){
-
+        asyncResult.cancel(true);
+       
     }
      
      public void startLoadbalancerSimulationByTime(int seconds){

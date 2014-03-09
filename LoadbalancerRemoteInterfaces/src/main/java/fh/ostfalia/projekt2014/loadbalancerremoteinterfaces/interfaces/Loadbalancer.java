@@ -5,6 +5,8 @@
 package fh.ostfalia.projekt2014.loadbalancerremoteinterfaces.interfaces;
 
 import fh.ostfalia.projekt2014.loadbalancerremoteinterfaces.entities.LoadbalancerResult;
+import java.util.concurrent.Future;
+import javax.ejb.Asynchronous;
 import javax.ejb.Remote;
 
 /**
@@ -14,6 +16,12 @@ import javax.ejb.Remote;
 @Remote
 public interface Loadbalancer {
     
-    public LoadbalancerResult startLoadbalancerSimulation();
+    @Asynchronous
+    public Future<LoadbalancerResult> startLoadbalancerSimulation();
+    
     public LoadbalancerResult startLoadbalancerSimulationByTime();
+    
+    @Asynchronous 
+    public void stopLoadbalancerSimulation();
+
 }
