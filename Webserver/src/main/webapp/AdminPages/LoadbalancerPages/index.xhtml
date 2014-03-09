@@ -9,15 +9,14 @@
     </h:head>
     <h:body>
         <h:form>
-        
-        <!--Nur für Admin aufrufbar -->
-        <h:selectOneMenu value="#{user.favCoffee1}">
-            <f:selectItem itemValue="musicservice1" itemLabel="Musicservice 1" />
-            <f:selectItem itemValue="musicservice2" itemLabel="Musicservice 2" />
-        </h:selectOneMenu>
-        
-        <h:commandButton value="Accept" action=""/>
-        
+            
+            <h:selectOneMenu  required="true" value="#{LoadbalancerMBean.mode}">
+                <f:selectItem itemValue="manual" itemLabel="Manual"/>
+                <f:selectItem itemValue="timed" itemLabel="Timed"/>           
+            </h:selectOneMenu>
+            
+            <h:commandButton action="#{LoadbalancerMBean.getModePage}" value="Submit" type="submit"/>
+            
         </h:form>
     </h:body>
 </html>
