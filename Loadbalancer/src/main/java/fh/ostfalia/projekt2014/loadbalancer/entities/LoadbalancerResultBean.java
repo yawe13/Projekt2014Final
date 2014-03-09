@@ -6,54 +6,29 @@
 
 package fh.ostfalia.projekt2014.loadbalancer.entities;
 
-import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import fh.ostfalia.projekt2014.loadbalancerremoteinterfaces.entities.LoadbalancerResult;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author KingDCB
  */
-@Entity
-public class LoadbalancerResultBean implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class LoadbalancerResultBean implements LoadbalancerResult{
+ 
+   //enthält ServerId + Anzahl der Aufrufe auf diese ID
+    private Map<Integer,Integer> simulationMap = new HashMap<>();
 
-    public Long getId() {
-        return id;
+    public LoadbalancerResultBean(Map<Integer,Integer> simulationMap) {
+        this.simulationMap = simulationMap;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public Map<Integer, Integer> getMyMap() {
+        return simulationMap;
     }
-
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof LoadbalancerResultBean)) {
-            return false;
-        }
-        LoadbalancerResultBean other = (LoadbalancerResultBean) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setMyMap(Map<Integer, Integer> myMap) {
+        this.simulationMap = myMap;
     }
-
-    @Override
-    public String toString() {
-        return "fh.ostfalia.projekt2014.loadbalancer.entities.LoadbalancerResultBean[ id=" + id + " ]";
-    }
-    
+      
 }
