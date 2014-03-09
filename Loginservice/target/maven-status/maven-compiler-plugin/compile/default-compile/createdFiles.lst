@@ -1,7 +1,6 @@
 fh\ostfalia\projekt2014\loginservice\controller\ClientServlet.class
 fh\ostfalia\projekt2014\loginservice\entities\Client_.class
 fh\ostfalia\projekt2014\loginservice\dao\UserDao.class
-.netbeans_automatic_build
 fh\ostfalia\projekt2014\loginservice\dao\ClientDao.class
 fh\ostfalia\projekt2014\loginservice\entities\Client.class
 fh\ostfalia\projekt2014\loginservice\entities\User_.class
