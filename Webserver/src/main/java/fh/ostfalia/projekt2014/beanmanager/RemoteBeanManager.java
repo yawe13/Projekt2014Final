@@ -31,7 +31,7 @@ public class RemoteBeanManager {
     
     /**
      *  Übergabe der oben beschriebenen Paremeter
-     *  Als Rückgabe wird das Stub-Objekt erwartet.
+     *  Als Rückgabe wird das Stub-Objekt erwartet. --->!!Achtung Leute? Das ist doch korrekt oder ? ("es kommt das Stub-Objekt"...)
      * @param jndiName JNDI-Name des Objektes z.B. musicservice.fh.ostfalia.projek2014.musicservice
      * @param ip Hier wird die IP des Servers angegeben --> Bei Multi-Server-Systemen steht hier nicht mehr localhost sondern die entsprechende Server IP auf dem 
      * der der Dienst deployt ist!!!!

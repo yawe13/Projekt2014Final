@@ -6,11 +6,13 @@
 
 package fh.ostfalia.projekt2014.loadbalancerremoteinterfaces.entities;
 
+import java.util.Map;
+
 /**
  *
  * @author KingDCB
  */
 public interface LoadbalancerResult {
-    public int getServerId();
-    public int getLoad();
+    public Map<Integer, Integer> getMyMap();
+    public void setMyMap(Map<Integer, Integer> myMap);
 }
