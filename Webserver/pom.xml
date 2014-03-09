@@ -51,12 +51,18 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>Musicservice</artifactId>
+            <artifactId>Loadbalancer</artifactId>
             <version>${project.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>Musicservice</artifactId>
+                    <groupId>fh.ostfalia.projekt2014</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>Loadbalancer</artifactId>
+            <artifactId>Musicservice</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
