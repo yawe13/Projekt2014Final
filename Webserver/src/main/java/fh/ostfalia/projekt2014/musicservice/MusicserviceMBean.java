@@ -49,10 +49,6 @@ public class MusicserviceMBean extends RemoteManagedBean {
     }
 
 
-    public String getPassedParameter() {
-        return musicserviceBean.getPassedParameter();
-    }
-
     public void upload() {
         musicserviceBean.upload(part);
     }
